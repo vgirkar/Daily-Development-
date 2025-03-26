@@ -5,18 +5,18 @@ export default function TodoForm({ addTodo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text.trim()) return;
+    if (text.trim() === "") return; // Prevent empty tasks
     addTodo(text);
-    setText("");
+    setText(""); // Clear input
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Add a task..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        placeholder="Add a new task..."
       />
       <button type="submit">Add</button>
     </form>
